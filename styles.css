@@ -1,0 +1,648 @@
+:root {
+    --bg: #FAF3E0; /* Beige claro (fondo) */
+    --card: #FFFFFF;
+    --text: #5A3E2B; /* Texto general */
+    --muted: #6D4C41; /* Color para notas */
+    --line: #E9C46A; /* Amarillo mostaza claro */
+    --title-color: #D96C2C; /* Títulos */
+    --subtitle-color: #C89B3C; /* Subtítulos */
+    --accent: #C8553D; /* Destacados */
+    --highlight-bg: #E9C46A; /* Cajas de ejemplos */
+    --good: #3ddc97;
+    --bad: #ff6b6b;
+    --body-color: var(--text);
+    --title-size: 32px;
+    --subtitle-size: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Estilos para la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #f186da;
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff1493;
+}
+
+/* Soporte para Firefox */
+* {
+    scrollbar-color: #e37cb0 var(--bg);
+    scrollbar-width: thin;
+}
+
+body {
+    margin: 0;
+    font-family: 'Forum', system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    background: var(--bg);
+    color: var(--body-color);
+}
+
+.container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 24px;
+}
+
+h1 {
+    margin: 0 0 8px;
+    font-size: var(--title-size);
+    color: var(--title-color);
+}
+
+.sub {
+    margin: 0 0 18px;
+    color: var(--subtitle-color);
+    font-size: var(--subtitle-size);
+}
+
+.nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    color: var(--text);
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 10px;
+    background: transparent;
+}
+
+.nav a:hover {
+    border-color: var(--accent);
+}
+
+.card {
+    margin: 18px 0;
+    padding: 18px;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* Estilos específicos para la tarjeta principal de bienvenida */
+.main-content .card {
+    padding: 28px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(249,244,235,0.95));
+    border: none;
+    border-radius: 18px;
+    box-shadow: 0 12px 40px rgba(13,13,13,0.18), inset 0 1px 0 rgba(255,255,255,0.6);
+    position: relative;
+    overflow: hidden;
+    border-top: 6px solid var(--line);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.main-content .card::before {
+    content: "";
+    position: absolute;
+    right: -80px;
+    top: -80px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle at 30% 30%, rgba(201,155,60,0.12), transparent 40%);
+    transform: rotate(25deg);
+    pointer-events: none;
+}
+
+.main-content .card .subtitle {
+    color: var(--title-color);
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.main-content .card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 12px 0 0;
+}
+
+.main-content .card ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 8px 0;
+    padding-left: 0;
+}
+
+.main-content .card ul li::before {
+    content: "•";
+    color: var(--accent);
+    font-weight: 700;
+    display: inline-block;
+    width: 20px;
+    font-size: 20px;
+    line-height: 1;
+    margin-right: 6px;
+}
+
+.main-content .card ul li a {
+    color: #4a1e6e;
+    text-decoration: underline;
+    font-weight: 600;
+}
+.main-content .card ul li a:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.main-content .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 50px rgba(13,13,13,0.22), inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+/* Cabecera y botón llamativo para la tarjeta de bienvenida (sin icono) */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 12px;
+}
+
+.card-headline .lead {
+    margin: 0;
+    color: var(--muted);
+}
+
+.btn-primary {
+    margin-left: auto;
+    background: linear-gradient(90deg, var(--accent), #d96c2c);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(217,108,44,0.18);
+    transition: transform 140ms ease, box-shadow 140ms ease, opacity 140ms ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(217,108,44,0.22);
+}
+
+/* Lista simplificada: viñetas estándar */
+.feature-list {
+    margin: 0;
+    padding-left: 20px;
+    list-style: disc;
+}
+
+.feature-list li {
+    padding: 6px 0;
+    margin-bottom: 6px;
+    background: transparent;
+}
+
+.feature-list li a {
+    color: var(--title-color);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.feature-list li a:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 900px) {
+    .card-header { gap: 12px; }
+    .btn-primary { padding: 8px 12px; }
+}
+
+.grid2 {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 16px;
+}
+
+@media (max-width: 860px) {
+    .grid2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+.tip,
+.note {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px dashed rgba(0,0,0,0.06);
+    color: var(--muted);
+}
+
+.imgBox img {
+    width: 200px;
+    margin-left: 100px;
+    margin-top: -20px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+}
+
+.imgCaption {
+    display: block;
+    width: 200px;
+    margin-left: 100px;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+@media (max-width: 860px) {
+    .inputs {
+        grid-template-columns: 1fr;
+    }
+}
+
+.field label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--muted);
+}
+
+.field input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    outline: none;
+}
+
+.field input:focus {
+    border-color: var(--accent);
+}
+
+.btnRow {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+}
+
+button {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    cursor: pointer;
+}
+
+button:hover {
+    border-color: var(--accent);
+}
+
+button.secondary {
+    opacity: 0.85;
+}
+
+.resultGrid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+@media (max-width: 860px) {
+    .resultGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.resultBox {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.result {
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.2);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.vennContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#vennSVG {
+    max-width: 100%;
+    height: auto;
+}
+
+pre {
+    margin: 10px 0 0;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.25);
+    overflow: auto;
+}
+
+code {
+    color: #5A3E2B;
+}
+
+/* Viñeta desplegable MATLAB */
+.matlabBadge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    margin-left: 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: rgba(244,162,97,0.08);
+    color: var(--text);
+    font-size: 12px;
+    user-select: none;
+}
+
+.matlabBadge .bubble {
+    position: absolute;
+    top: 34px;
+    right: 0;
+    width: 260px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(18, 26, 39, 0.98);
+    color: var(--muted);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.matlabBadge:hover .bubble {
+    display: block;
+}
+
+/* QUIZ */
+.quiz {
+    margin-top: 14px;
+    display: grid;
+    gap: 14px;
+}
+
+.q {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.q h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+
+.opt {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin: 6px 0;
+    color: var(--muted);
+}
+
+.opt input {
+    margin-top: 3px;
+}
+
+.feedback {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 12px;
+    border: 1px dashed var(--line);
+    color: var(--muted);
+}
+
+.good {
+    border-color: rgba(61, 220, 151, 0.6);
+    color: #924545
+}
+
+.bad {
+    border-color: rgba(255, 107, 107, 0.6);
+    color: #924545
+}
+
+.summary {
+    margin-top: 14px;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+.footer {
+    opacity: 0.75;
+    margin: 24px 0 6px;
+}
+
+.subtitle {
+    color: var(--subtitle-color);
+    font-size: var(--subtitle-size);
+}
+
+.authors {
+    margin-top: 20px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-top: 1px solid rgba(0,0,0,0.08);
+    text-align: center;
+    background-color: #5A3E2B;
+    border-radius: 8px;
+}
+
+.authors h4 {
+    margin: 0 0 8px;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+.authors p {
+    margin: 0;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.author-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.author-list li {
+    color: #FFFFFF;
+    font-size: 14px;
+    margin: 4px 0;
+    display: inline;
+    margin-right: 12px;
+}
+
+/* ============ Estilos SVG para Diagramas de Venn ============ */
+svg {
+    background: #FFF0EE;
+    border-radius: 8px;
+}
+
+.set-A {
+    fill: #F4A261;
+    fill-opacity: 0.65;
+}
+
+.set-B {
+    fill: #E76F51;
+    fill-opacity: 0.65;
+}
+
+.union {
+    fill: #E76F51;
+    fill-opacity: 0.7;
+}
+
+.inter {
+    fill: #F7B267;
+    fill-opacity: 0.8;
+}
+
+.diffA {
+    fill: #E1B12C;
+    fill-opacity: 0.75;
+}
+
+.diffB {
+    fill: #C95A5A;
+    fill-opacity: 0.75;
+}
+
+.sym {
+    fill: #e4e382;
+    fill-opacity: 0.7;
+}
+
+.stroke {
+    stroke: #6D4C41;
+    stroke-width: 2;
+    fill: none;
+    text-align: center;
+}
+
+/* ESTILOS PARA SIDEBAR */
+.main-wrapper {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.main-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.sidebar {
+    flex: 0 0 280px;
+    position: sticky;
+    top: 24px;
+    height: fit-content;
+}
+
+.sidebar-card {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-right: 4px solid var(--title-color);
+}
+
+.sidebar-title {
+    margin: 0 0 12px;
+    font-size: 18px;
+    color: var(--title-color);
+    font-weight: bold;
+}
+
+.sidebar-card p {
+    margin: 0 0 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.objective-list {
+    margin-top: 16px;
+}
+
+.objective-list h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: var(--subtitle-color);
+}
+
+.objective-list ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.objective-list li {
+    margin: 6px 0;
+    font-size: 13px;
+    color: var(--text);
+}
+
+/* Responsive para pantallas pequeñas */
+@media (max-width: 900px) {
+    .main-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex: 1;
+        position: static;
+        height: auto;
+    }
+
+    .main-content {
+        flex: 1;
+    }
+}
